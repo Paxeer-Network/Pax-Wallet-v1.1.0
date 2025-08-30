@@ -1,0 +1,238 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Mobile APK specific styles */
+@supports (padding: env(safe-area-inset-bottom)) {
+  .safe-area-pb {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+}
+
+/* Mobile optimization for touch targets */
+@media (max-width: 768px) {
+  /* Ensure minimum touch target size */
+  button, 
+  .button,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Fix for mobile viewport */
+  .mobile-full-height {
+    height: 100vh;
+    height: 100dvh; /* Dynamic viewport height for mobile */
+  }
+  
+  /* Prevent zoom on input focus */
+  input, select, textarea {
+    font-size: 16px;
+  }
+  
+  /* Mobile-friendly scrolling */
+  .mobile-scroll {
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+  }
+  
+  /* Fix mini apps layout for mobile */
+  .mobile-mini-app {
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 0.5rem;
+  }
+  
+  /* Responsive text sizing */
+  .mobile-text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+  
+  /* Fix navigation header overlapping */
+  .mobile-nav-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Mobile page container with proper spacing */
+  .mobile-page-container {
+    padding-bottom: 90px; /* Space for bottom nav */
+    min-height: 100vh;
+  }
+  
+  /* Improve touch targets for mobile */
+  .mobile-touch-target {
+    min-height: 48px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Fix card spacing on mobile */
+  .mobile-card-spacing {
+    margin: 0.75rem;
+    padding: 1rem;
+  }
+  
+  /* Beta badge positioning fix */
+  .mobile-beta-badge {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    margin-left: 0.5rem;
+  }
+  
+  /* Fix options navigation spacing */
+  .mobile-options-header {
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  
+  /* Ensure proper button spacing in mobile */
+  .mobile-button-group {
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  /* Fix mobile header text overflow */
+  .mobile-header-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 200px;
+  }
+}
+
+:root {
+  --background: hsl(0, 0%, 0%);
+  --foreground: hsl(0, 0%, 100%);
+  --card: hsl(0, 0%, 8%);
+  --card-foreground: hsl(0, 0%, 100%);
+  --popover: hsl(0, 0%, 0%);
+  --popover-foreground: hsl(0, 0%, 100%);
+  --primary: hsl(256, 70%, 66%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(174, 100%, 40%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --muted: hsl(0, 0%, 8%);
+  --muted-foreground: hsl(0, 0%, 60%);
+  --accent: hsl(42, 93%, 70%);
+  --accent-foreground: hsl(0, 0%, 0%);
+  --destructive: hsl(11, 73%, 61%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(0, 0%, 15%);
+  --input: hsl(0, 0%, 8%);
+  --ring: hsl(256, 70%, 66%);
+  --success: hsl(162, 100%, 36%);
+  --danger: hsl(11, 73%, 61%);
+  --dark-bg: hsl(0, 0%, 0%);
+  --card-bg: hsl(0, 0%, 8%);
+  --radius: 0.75rem;
+  --font-sans: 'Inter', sans-serif;
+  --font-serif: Georgia, serif;
+  --font-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  
+  /* Mobile-specific variables */
+  --mobile-nav-height: 80px;
+  --mobile-content-padding: 1rem;
+}
+
+.dark {
+  --background: hsl(0, 0%, 0%);
+  --foreground: hsl(0, 0%, 100%);
+  --card: hsl(0, 0%, 8%);
+  --card-foreground: hsl(0, 0%, 100%);
+  --popover: hsl(0, 0%, 0%);
+  --popover-foreground: hsl(0, 0%, 100%);
+  --primary: hsl(256, 70%, 66%);
+  --primary-foreground: hsl(0, 0%, 100%);
+  --secondary: hsl(174, 100%, 40%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+  --muted: hsl(0, 0%, 8%);
+  --muted-foreground: hsl(0, 0%, 60%);
+  --accent: hsl(42, 93%, 70%);
+  --accent-foreground: hsl(0, 0%, 0%);
+  --destructive: hsl(11, 73%, 61%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+  --border: hsl(0, 0%, 15%);
+  --input: hsl(0, 0%, 8%);
+  --ring: hsl(256, 70%, 66%);
+  --success: hsl(162, 100%, 36%);
+  --danger: hsl(11, 73%, 61%);
+  --dark-bg: hsl(0, 0%, 0%);
+  --card-bg: hsl(0, 0%, 8%);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-[var(--dark-bg)] text-foreground;
+    font-family: var(--font-sans);
+  }
+}
+
+@layer utilities {
+  .bg-primary {
+    background-color: hsl(var(--primary));
+  }
+  
+  .bg-secondary {
+    background-color: hsl(var(--secondary));
+  }
+  
+  .bg-accent {
+    background-color: hsl(var(--accent));
+  }
+  
+  .bg-success {
+    background-color: hsl(var(--success));
+  }
+  
+  .bg-danger {
+    background-color: hsl(var(--danger));
+  }
+  
+  .bg-dark-bg {
+    background-color: hsl(var(--dark-bg));
+  }
+  
+  .bg-card-bg {
+    background-color: hsl(var(--card-bg));
+  }
+  
+  .text-primary {
+    color: hsl(var(--primary));
+  }
+  
+  .text-secondary {
+    color: hsl(var(--secondary));
+  }
+  
+  .text-accent {
+    color: hsl(var(--accent));
+  }
+  
+  .text-success {
+    color: hsl(var(--success));
+  }
+  
+  .text-danger {
+    color: hsl(var(--danger));
+  }
+}
